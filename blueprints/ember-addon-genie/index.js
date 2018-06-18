@@ -1,6 +1,6 @@
 /*jshint node:true*/
 var utils     = require('../../lib/utils/utils');
-var Promise   = require('ember-cli/lib/ext/promise');
+var RSVP      = require('rsvp');
 var mapSeries = require('promise-map-series');
 
 var PossibleOptions = [
@@ -34,7 +34,7 @@ module.exports = {
         if(selectedOptions[o.value] && o.blueprint) {
           return utils.processBlueprint.call(self, type, o.blueprint, options, { _selectedOptions: selectedOptions });
         }
-        return Promise.resolve();
+        return RSVP.resolve();
       });
     });
   },

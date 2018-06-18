@@ -1,6 +1,5 @@
 /*jshint node:true*/
 var utils      = require('../../lib/utils/utils');
-var Promise    = require('ember-cli/lib/ext/promise');
 
 module.exports = {
   description: 'Genie Init',

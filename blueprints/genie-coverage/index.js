@@ -1,6 +1,6 @@
 /*jshint node:true*/
 var utils   = require('../../lib/utils/utils');
-var Promise = require('ember-cli/lib/ext/promise');
+var RSVP    = require('rsvp');
 
 module.exports = {
   description: 'Setup coverage',
@@ -26,7 +26,7 @@ module.exports = {
     travisYaml.addons = travisYaml.addons || {};
     travisYaml.after_script = travisYaml.after_script || [];
 
-    return Promise.resolve().then(function() {
+    return RSVP.resolve().then(function() {
       if(!travisYaml.addons.code_climate) {
         travisYaml.before_install.push('npm install -g codeclimate-test-reporter');
         travisYaml.after_script.push('codeclimate-test-reporter < coverage/lcov.info');
@@ -45,7 +45,7 @@ module.exports = {
         });
       }
 
-      return Promise.resolve();
+      return RSVP.resolve();
     }).then(function() {
       utils.setContents.call(self, '.travis.yml', 'yaml', travisYaml);
     });
